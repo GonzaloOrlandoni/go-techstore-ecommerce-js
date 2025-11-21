@@ -1,6 +1,6 @@
 /* =========================================
-   TEMA: TOXIC GAMER PRO (FINAL VERSION)
-   ========================================= */
+   BASE & RESET
+========================================= */
 
 :root {
   --primary: #00ff88;
@@ -22,15 +22,17 @@
   --container-width: 1200px;
 }
 
-/* --- RESET Y BASE --- */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   font-family: var(--font);
   background-color: var(--bg-body);
@@ -38,11 +40,13 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
+
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 2rem;
 }
+
 h1,
 h2,
 h3,
@@ -52,7 +56,7 @@ h4 {
   letter-spacing: -0.5px;
 }
 
-/* --- SCROLLBAR --- */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -70,7 +74,8 @@ h4 {
 
 /* =========================================
    HEADER & NAV
-   ========================================= */
+========================================= */
+
 header {
   background-color: var(--bg-panel);
   border-bottom: 1px solid var(--border-color);
@@ -79,17 +84,20 @@ header {
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80px;
 }
+
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
+
 .logo {
   font-size: 1.8rem;
   font-weight: 900;
@@ -98,14 +106,17 @@ header {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 .accent {
   color: var(--primary);
   text-shadow: 0 0 10px var(--primary-glow);
 }
+
 .nav-links {
   display: flex;
   gap: 2.5rem;
 }
+
 .nav-links a {
   color: var(--text-body);
   text-decoration: none;
@@ -115,9 +126,11 @@ header {
   transition: all 0.3s ease;
   position: relative;
 }
+
 .nav-links a:hover {
   color: var(--primary);
 }
+
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -128,6 +141,7 @@ header {
   background-color: var(--primary);
   transition: width 0.3s;
 }
+
 .nav-links a:hover::after {
   width: 100%;
 }
@@ -139,10 +153,12 @@ header {
   transition: 0.3s;
   color: var(--text-main);
 }
+
 .cart-icon-container:hover {
   color: var(--primary);
   transform: scale(1.1);
 }
+
 .cart-counter {
   position: absolute;
   top: -8px;
@@ -159,6 +175,7 @@ header {
   font-weight: 900;
   box-shadow: 0 0 10px var(--primary);
 }
+
 .btn-login {
   background: transparent;
   border: 1px solid var(--border-color);
@@ -166,20 +183,23 @@ header {
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
-  font-family: var(--font);
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 8px;
   transition: 0.3s;
 }
+
 .btn-login:hover {
   border-color: var(--primary);
   color: var(--primary);
   background: rgba(0, 255, 136, 0.1);
 }
 
-/* --- HERO --- */
+/* =========================================
+   HERO
+========================================= */
+
 .hero-section {
   height: 75vh;
   min-height: 500px;
@@ -195,16 +215,19 @@ header {
   border-bottom: 3px solid var(--primary);
   box-shadow: 0 10px 30px -10px var(--primary-glow);
 }
+
 .hero-content h1 {
   font-size: 5rem;
   line-height: 1.1;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
 }
+
 .neon-text {
   color: var(--primary);
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 0 0 15px var(--primary-glow);
 }
+
 .hero-content p {
   font-size: 1.5rem;
   color: var(--text-body);
@@ -213,7 +236,10 @@ header {
   margin-inline: auto;
 }
 
-/* --- COMPONENTES UI --- */
+/* =========================================
+   UI COMPONENTS
+========================================= */
+
 .btn {
   border: none;
   padding: 1rem 2rem;
@@ -230,16 +256,19 @@ header {
   display: inline-block;
   text-align: center;
 }
+
 .btn--primary {
   background-color: var(--primary);
   color: var(--bg-body);
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
 }
+
 .btn--primary:hover:not(:disabled) {
   background-color: var(--primary-hover);
   box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
   transform: translateY(-2px);
 }
+
 .btn--danger {
   background-color: transparent;
   border: 2px solid var(--danger);
@@ -247,6 +276,7 @@ header {
   padding: 0.6rem 1.2rem;
   width: auto;
 }
+
 .btn--danger:hover {
   background-color: var(--danger);
   color: white;
@@ -260,7 +290,72 @@ header {
   text-transform: uppercase;
 }
 
-/* --- PC BUILDER & SHOP --- */
+/* =========================================
+   PRODUCT CARDS (Catalog & Builder)
+========================================= */
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.product-card .card-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-card h3,
+.product-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  height: 40px;
+  overflow: hidden;
+  line-height: 1.2;
+}
+
+.product-card .price {
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+/* Builder-specific adjustments */
+.builder-selection .product-card img {
+  height: 150px;
+}
+
+.builder-selection .product-card .price {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   PC BUILDER
+========================================= */
+
 .builder-grid {
   display: grid;
   grid-template-columns: 280px 1fr 320px;
@@ -272,6 +367,7 @@ header {
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
   align-items: start;
 }
+
 .step {
   padding: 1.2rem;
   background: var(--bg-card);
@@ -286,16 +382,19 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+
 .step:hover {
   border-color: var(--primary-hover);
   color: var(--primary);
 }
+
 .step.active {
   border-color: var(--primary);
   color: var(--primary);
   background: rgba(0, 255, 136, 0.03);
   box-shadow: 0 0 15px rgba(0, 255, 136, 0.1) inset;
 }
+
 .builder-selection {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -304,12 +403,7 @@ header {
   overflow-y: auto;
   padding-right: 1rem;
 }
-.builder-selection .product-card {
-  border: 2px solid var(--border-color);
-  background: var(--bg-card);
-}
 
-/* PLATFORM SELECTION */
 .platform-grid {
   grid-column: 1 / -1;
   display: grid;
@@ -317,6 +411,7 @@ header {
   gap: 2rem;
   margin-top: 1rem;
 }
+
 .platform-card {
   background: var(--bg-card);
   border: 2px solid var(--border-color);
@@ -329,7 +424,7 @@ header {
   overflow: hidden;
 }
 
-/* BOTÓN VOLVER */
+/* Button: Back */
 .btn-back-step {
   grid-column: 1 / -1;
   background: #1a1a1a;
@@ -341,7 +436,6 @@ header {
   cursor: pointer;
   text-align: center;
   transition: 0.3s;
-  font-family: var(--font);
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -352,7 +446,10 @@ header {
   letter-spacing: 1px;
 }
 
-/* FILTROS (ESTÉTICA FINAL ANGULAR) */
+/* =========================================
+   PRODUCT FILTERS
+========================================= */
+
 .filters {
   display: flex;
   justify-content: center;
@@ -360,21 +457,24 @@ header {
   margin-bottom: 3rem;
   flex-wrap: wrap;
 }
+
 .filter-btn {
   background: var(--bg-card);
   border: 1px solid #444;
   color: var(--text-muted);
   padding: 0.8rem 1.8rem;
-  border-radius: 4px; /* ANGULAR FIX */
+  border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
   text-transform: uppercase;
 }
+
 .filter-btn:hover:not(.active) {
   border-color: var(--text-main);
   color: var(--text-main);
 }
+
 .filter-btn.active {
   background: var(--bg-panel);
   color: var(--primary);
@@ -383,7 +483,10 @@ header {
   transform: translateY(-2px);
 }
 
-/* SHOP SECTION */
+/* =========================================
+   SHOP PRODUCT GRID
+========================================= */
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -392,8 +495,9 @@ header {
 }
 
 /* =========================================
-   MODALES (FIX CLICKEABILIDAD)
-   ========================================= */
+   CART & CHECKOUT MODALS
+========================================= */
+
 .cart-overlay {
   position: fixed;
   top: 0;
@@ -407,8 +511,13 @@ header {
   transition: 0.3s;
   backdrop-filter: blur(5px);
 }
+
+.cart-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 .checkout-modal {
-  /* FIX CRÍTICO 1: Z-INDEX para que sea clickeable */
   z-index: 2001;
   background: var(--bg-panel);
   padding: 2.5rem;
@@ -422,6 +531,7 @@ header {
   transform: translate(-50%, -50%);
   box-shadow: 0 0 50px rgba(0, 255, 136, 0.2);
 }
+
 .checkout-header {
   display: flex;
   justify-content: space-between;
@@ -429,14 +539,14 @@ header {
   margin-bottom: 2rem;
   position: relative;
 }
+
 .checkout-header h2 {
-  /* FIX 2: Centrado de título */
   flex-grow: 1;
   text-align: center;
   margin-left: 1rem;
 }
+
 .close-btn {
-  /* FIX 3: Posición del botón de cierre para que no estorbe el centrado */
   background: none;
   border: none;
   color: var(--text-muted);
@@ -448,19 +558,17 @@ header {
   transition: color 0.2s ease;
 }
 
-/* FIX 4: Inputs Legibles */
 .form-group input {
   background: var(--bg-body);
   border: 1px solid #333;
   padding: 1rem;
-  color: var(--text-main); /* Texto blanco visible */
+  color: var(--text-main);
   width: 100%;
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* CART FOOTER */
 .cart-footer {
   border-top: 2px solid var(--border-color);
   padding-top: 2rem;
@@ -468,12 +576,16 @@ header {
   display: flex;
   gap: 15px;
 }
+
 .cart-footer .btn {
   width: auto;
   flex-grow: 1;
 }
 
-/* --- FOOTER --- */
+/* =========================================
+   FOOTER
+========================================= */
+
 .site-footer {
   background-color: #050505;
   border-top: 1px solid var(--border-color);
@@ -481,6 +593,7 @@ header {
   margin-top: 4rem;
   font-size: 0.9rem;
 }
+
 .footer-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
@@ -488,16 +601,61 @@ header {
   padding-bottom: 3rem;
 }
 
-/* --- RESPONSIVE --- */
+/* =========================================
+   SCROLL TO TOP BUTTON
+========================================= */
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--primary);
+  color: var(--bg-body);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--primary-glow);
+  z-index: 1500;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.3s ease-in-out;
+}
+
+#scrollTopBtn.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
 @media (max-width: 1024px) {
   .builder-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
@@ -505,34 +663,42 @@ header {
     padding: 1rem 0;
     gap: 1rem;
   }
+
   .btn-login span {
     display: none;
   }
+
   .footer-grid {
     grid-template-columns: 1fr;
     text-align: center;
   }
+
   .cart-footer {
     flex-direction: column;
   }
+
   .cart-footer .btn {
     width: 100%;
   }
+
   .builder-steps {
     overflow-x: auto;
     white-space: nowrap;
     padding-bottom: 0.5rem;
     justify-content: flex-start;
   }
+
   .step {
     flex: 0 0 auto;
     display: inline-block;
     margin-right: 10px;
   }
+
   .search-container input {
     width: calc(100% - 20px);
     margin-left: 10px;
   }
+
   .search-container i {
     left: 20px;
   }

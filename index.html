@@ -1,217 +1,337 @@
 <!DOCTYPE html>
 <html lang="es">
+   
   <head>
+       
     <meta charset="UTF-8" />
+       
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       
     <title>GO TechStore | Build Your Beast</title>
+
+           
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+           
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
+       
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+       
     <link rel="stylesheet" href="css/style.css" />
+     
   </head>
+   
   <body>
+       
     <header>
+           
       <div class="container navbar">
-        <a href="#" class="logo">GO<span class="accent">TECH</span></a>
+                <a href="#" class="logo">GO<span class="accent">TECH</span></a>        
         <nav class="nav-links">
-          <a href="#hero">Inicio</a>
-          <a href="#builder">Armar PC</a>
-          <a href="#shop">Productos</a>
+                    <a href="#hero">Inicio</a>           <a href="#builder">Armar PC</a>          
+          <a href="#shop">Productos</a>        
         </nav>
+               
         <div class="nav-actions">
-          <button id="loginBtn" class="btn-login"><i class="fas fa-user"></i> <span>Ingresar</span></button>
+                    <button id="loginBtn" class="btn-login"><i class="fas fa-user"></i> <span>Ingresar</span></button>  
+                 
           <div class="cart-icon-container" id="openCart">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cartCounter" class="cart-counter">0</span>
+                        <i class="fas fa-shopping-cart"></i>            
+            <span id="cartCounter" class="cart-counter">0</span>          
           </div>
+                 
         </div>
+             
       </div>
+         
     </header>
 
+       
     <section id="hero" class="hero-section">
+           
       <div class="hero-content container">
+               
         <h1>CONSTRUYE TU <span class="neon-text">LEGADO</span></h1>
+               
         <p>El hardware más extremo para el rendimiento que exiges.</p>
-        <a href="#builder" class="btn btn--primary btn--large">ARMAR MI PC AHORA</a>
+                <a href="#builder" class="btn btn--primary btn--large">ARMAR MI PC AHORA</a>      
       </div>
+         
     </section>
 
+       
     <section id="builder" class="section-builder container">
+           
       <h2 class="section-title">PC BUILDER <i class="fas fa-tools"></i></h2>
+           
       <p class="section-subtitle">Selecciona tus componentes paso a paso</p>
 
+           
       <div class="builder-grid">
+               
         <div class="builder-steps">
+                   
           <div class="step active" data-category="cpu">1. Procesador</div>
+                   
           <div class="step" data-category="cooler">2. Refrigeración</div>
+                   
           <div class="step" data-category="motherboard">3. Motherboard</div>
+                   
           <div class="step" data-category="ram">4. Memoria RAM</div>
+                   
           <div class="step" data-category="gpu">5. Tarjeta de Video</div>
+                   
           <div class="step" data-category="storage">6. Almacenamiento</div>
+                   
           <div class="step" data-category="psu">7. Fuente de Poder</div>
+                   
           <div class="step" data-category="case">8. Gabinete</div>
+                 
         </div>
 
+               
         <div id="builderSelection" class="builder-selection"></div>
 
+               
         <div class="build-summary">
+                   
           <h3>Tu Configuración</h3>
+                   
           <ul id="buildList">
+                       
             <li class="empty-build">Aún no has seleccionado componentes.</li>
+                     
           </ul>
+                   
           <div class="build-total">Total Build: <span id="buildTotal">$0</span></div>
-          <button id="addBuildToCart" class="btn btn--primary" disabled>AGREGAR BUILD AL CARRITO</button>
+                    <button id="addBuildToCart" class="btn btn--primary" disabled>AGREGAR BUILD AL CARRITO</button>    
+             
         </div>
+             
       </div>
+         
     </section>
 
+       
     <section id="shop" class="container section-shop">
+           
       <h2 class="section-title">CATÁLOGO COMPLETO</h2>
 
+           
       <div class="search-container">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="Buscar componente (ej: RTX 4090)..." />
+                <i class="fas fa-search"></i>        
+        <input type="text" id="searchInput" placeholder="Buscar componente (ej: RTX 4090)..." />      
       </div>
 
+           
       <div class="filters">
-        <button class="filter-btn active" data-filter="all">Todo</button>
-        <button class="filter-btn" data-filter="cpu">CPUs</button>
-        <button class="filter-btn" data-filter="motherboard">Mothers</button>
-        <button class="filter-btn" data-filter="gpu">Video</button>
-        <button class="filter-btn" data-filter="ram">RAM</button>
-        <button class="filter-btn" data-filter="storage">Discos</button>
-        <button class="filter-btn" data-filter="cooler">Coolers</button>
-        <button class="filter-btn" data-filter="psu">Fuentes</button>
-        <button class="filter-btn" data-filter="case">Gabinetes</button>
-        <button class="filter-btn" data-filter="monitor">Monitores</button>
-        <button class="filter-btn" data-filter="periferico">Periféricos</button>
-        <button class="filter-btn" data-filter="sillas">Sillas</button>
+                <button class="filter-btn active" data-filter="all">Todo</button>        
+        <button class="filter-btn" data-filter="cpu">CPUs</button>        
+        <button class="filter-btn" data-filter="motherboard">Mothers</button>        
+        <button class="filter-btn" data-filter="gpu">Video</button>        
+        <button class="filter-btn" data-filter="ram">RAM</button>        
+        <button class="filter-btn" data-filter="storage">Discos</button>        
+        <button class="filter-btn" data-filter="cooler">Coolers</button>        
+        <button class="filter-btn" data-filter="psu">Fuentes</button>        
+        <button class="filter-btn" data-filter="case">Gabinetes</button>        
+        <button class="filter-btn" data-filter="monitor">Monitores</button>        
+        <button class="filter-btn" data-filter="periferico">Periféricos</button>        
+        <button class="filter-btn" data-filter="sillas">Sillas</button>      
       </div>
 
+           
       <div id="productsContainer" class="products-grid"></div>
+         
     </section>
 
+           
     <div class="cart-overlay" id="cartOverlay">
+           
       <div class="cart-sidebar">
+               
         <div class="cart-header">
+                   
           <h2>Tu Carrito</h2>
-          <button id="closeCart" class="close-btn"><i class="fas fa-times"></i></button>
+                    <button id="closeCart" class="close-btn"><i class="fas fa-times"></i></button>        
         </div>
+               
         <div id="cartItems" class="cart-items">
+                   
           <p class="empty-msg">Carrito vacío.</p>
+                 
         </div>
+               
         <div class="cart-footer">
+                   
           <div class="total">Total: <span id="totalPrice">$0</span></div>
-          <button id="clearCart" class="btn btn--danger">Vaciar</button>
-          <button id="goToCheckout" class="btn btn--primary">Pagar Ahora</button>
+                    <button id="clearCart" class="btn btn--danger">Vaciar</button>          
+          <button id="goToCheckout" class="btn btn--primary">Pagar Ahora</button>        
         </div>
+             
       </div>
+         
     </div>
 
+       
     <div class="cart-overlay" id="checkoutOverlay">
+           
       <div class="checkout-modal">
+               
         <div class="checkout-header">
+                   
           <h2>Finalizar Compra</h2>
-          <button id="closeCheckout" class="close-btn"><i class="fas fa-times"></i></button>
+                    <button id="closeCheckout" class="close-btn"><i class="fas fa-times"></i></button>        
         </div>
+               
         <form id="checkoutForm" class="checkout-form">
+                   
           <div class="form-group">
-            <label>Nombre Completo</label>
-            <input type="text" required placeholder="Ej: Gonzalo Orlandoni" />
+                        <label>Nombre Completo</label>            
+            <input type="text" required placeholder="Ej: Gonzalo Orlandoni" />          
           </div>
+                   
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" required placeholder="Ej: gonzalo@gows.com" />
+                        <label>Email</label>            
+            <input type="email" required placeholder="Ej: gonzalo@gows.com" />            
           </div>
+                   
           <div class="form-group">
-            <label>Tarjeta (Simulación)</label>
-            <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" required />
+                        <label>Tarjeta (Simulación)</label>            
+            <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" required />          
           </div>
+                   
           <div class="checkout-summary">
+                       
             <p>Total a pagar: <span id="checkoutTotal" class="accent">$0</span></p>
+                     
           </div>
-          <button type="submit" class="btn btn--primary btn--large">CONFIRMAR PAGO</button>
+                    <button type="submit" class="btn btn--primary btn--large">CONFIRMAR PAGO</button>        
         </form>
+             
       </div>
+         
     </div>
 
+       
     <div class="cart-overlay" id="loginOverlay">
+           
       <div class="checkout-modal login-modal">
+               
         <div class="checkout-header">
+                   
           <h2>Bienvenido</h2>
-          <button id="closeLogin" class="close-btn"><i class="fas fa-times"></i></button>
+                    <button id="closeLogin" class="close-btn"><i class="fas fa-times"></i></button>        
         </div>
+               
         <form id="loginForm" class="checkout-form">
+                   
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" required placeholder="usuario@ejemplo.com" />
+                        <label>Email</label>            
+            <input type="email" required placeholder="usuario@ejemplo.com" />          
           </div>
+                   
           <div class="form-group">
-            <label>Contraseña</label>
-            <input type="password" required placeholder="••••••••" />
+                        <label>Contraseña</label>            
+            <input type="password" required placeholder="••••••••" />          
           </div>
-          <button type="submit" class="btn btn--primary btn--large" style="width: 100%">INICIAR SESIÓN</button>
+                   
+          <button type="submit" class="btn btn--primary btn--large" style="width: 100%">INICIAR SESIÓN</button>        
+           
           <p style="text-align: center; margin-top: 1rem; color: #888; font-size: 0.9rem">
-            ¿No tienes cuenta? <a href="#" style="color: var(--primary)">Regístrate</a>
+                        ¿No tienes cuenta? <a href="#" style="color: var(--primary)">Regístrate</a>          
           </p>
+                 
         </form>
+             
       </div>
+         
     </div>
 
+       
     <footer class="site-footer">
+           
       <div class="container footer-grid">
+               
         <div class="footer-col">
-          <a href="#" class="footer-logo">GO<span class="accent">TECH</span></a>
+                    <a href="#" class="footer-logo">GO<span class="accent">TECH</span></a>          
           <p>Líderes en hardware de alto rendimiento. Construimos las máquinas que impulsan tus sueños y victorias.</p>
+                   
           <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>            
+            <a href="#"><i class="fab fa-twitter"></i></a>             <a href="#"><i class="fab fa-discord"></i></a>  
+                      <a href="#"><i class="fab fa-youtube"></i></a>          
           </div>
+                 
         </div>
+               
         <div class="footer-col">
+                   
           <h4>NAVEGACIÓN</h4>
+                   
           <ul>
+                       
             <li><a href="#builder">Armar PC</a></li>
+                       
             <li><a href="#shop">Productos</a></li>
+                       
             <li><a href="#hero">Inicio</a></li>
+                       
             <li><a href="#">Ofertas Semanales</a></li>
+                     
           </ul>
+                 
         </div>
+               
         <div class="footer-col">
+                   
           <h4>SOPORTE</h4>
+                   
           <ul>
+                       
             <li><a href="#">Centro de Ayuda</a></li>
+                       
             <li><a href="#">Garantías y Devoluciones</a></li>
+                       
             <li><a href="#">Estado de mi Orden</a></li>
+                       
             <li><a href="#">Términos y Condiciones</a></li>
+                     
           </ul>
+                 
         </div>
+               
         <div class="footer-col">
+                   
           <h4>MÉTODOS DE PAGO</h4>
+                   
           <div class="payment-icons">
-            <i class="fab fa-cc-visa"></i>
-            <i class="fab fa-cc-mastercard"></i>
-            <i class="fab fa-cc-paypal"></i>
-            <i class="fas fa-university"></i>
-            <i class="fab fa-bitcoin"></i>
+                        <i class="fab fa-cc-visa"></i>             <i class="fab fa-cc-mastercard"></i>            
+            <i class="fab fa-cc-paypal"></i>             <i class="fas fa-university"></i>            
+            <i class="fab fa-bitcoin"></i>          
           </div>
+                   
           <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.7">Envíos a todo el país con seguro incluido.</p>
+                 
         </div>
+             
       </div>
+           
       <div class="footer-bottom">
+               
         <p>© 2025 GO TechStore. Todos los derechos reservados. Desarrollado por <strong>Gonzalo Orlandoni</strong>.</p>
+             
       </div>
+         
     </footer>
 
-    <a href="#" id="scrollTopBtn" aria-label="Subir">
-      <i class="fas fa-arrow-up"></i>
-    </a>
+            <a href="#" id="scrollTopBtn" aria-label="Subir">       <i class="fas fa-arrow-up"></i>     </a>
 
+           
     <script src="js/products.js"></script>
+       
     <script src="js/main.js"></script>
+     
   </body>
 </html>

@@ -1,3 +1,4 @@
+// ESTOS DATOS DEBEN ESTAR EN js/products.js O SIMILAR. Se mantienen aquí para el código completo.
 const productos = [
   // --- 1. PROCESADORES (CPU) ---
   {
@@ -17,8 +18,7 @@ const productos = [
     categoria: "cpu",
     socket: "am5",
     destacado: false,
-  },
-  // --- 2. COOLERS ---
+  }, // --- 2. COOLERS ---
   {
     id: 20,
     nombre: "Cooler Master Hyper 212",
@@ -34,8 +34,7 @@ const productos = [
     img: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=500&q=80",
     categoria: "cooler",
     socket: "lga1700",
-  },
-  // --- 3. MOTHERBOARDS ---
+  }, // --- 3. MOTHERBOARDS ---
   {
     id: 5,
     nombre: "ASUS ROG Strix Z790",
@@ -51,16 +50,14 @@ const productos = [
     img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80",
     categoria: "motherboard",
     socket: "am5",
-  },
-  // --- 4. RAM ---
+  }, // --- 4. RAM ---
   {
     id: 6,
     nombre: "Corsair Vengeance 32GB DDR5",
     precio: 180000,
     img: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=500&q=80",
     categoria: "ram",
-  },
-  // --- 5. GPU ---
+  }, // --- 5. GPU ---
   {
     id: 3,
     nombre: "NVIDIA RTX 4090 24GB",
@@ -75,8 +72,7 @@ const productos = [
     precio: 1400000,
     img: "https://images.unsplash.com/photo-1624705024411-db99130065ea?auto=format&fit=crop&w=500&q=80",
     categoria: "gpu",
-  },
-  // --- 6. STORAGE ---
+  }, // --- 6. STORAGE ---
   {
     id: 30,
     nombre: "Samsung 990 PRO 1TB",
@@ -90,24 +86,21 @@ const productos = [
     precio: 110000,
     img: "https://images.unsplash.com/photo-1628557044797-f21a1735506d?auto=format&fit=crop&w=500&q=80",
     categoria: "storage",
-  },
-  // --- 7. PSU ---
+  }, // --- 7. PSU ---
   {
     id: 40,
     nombre: "Corsair RM850x Gold",
     precio: 190000,
     img: "https://images.unsplash.com/photo-1587202372616-b4345a271442?auto=format&fit=crop&w=500&q=80",
     categoria: "psu",
-  },
-  // --- 8. GABINETES ---
+  }, // --- 8. GABINETES ---
   {
     id: 50,
     nombre: "Lian Li O11 Dynamic",
     precio: 220000,
     img: "https://images.unsplash.com/photo-1587202372162-411f29b674d5?auto=format&fit=crop&w=500&q=80",
     categoria: "case",
-  },
-  // --- EXTRAS ---
+  }, // --- EXTRAS ---
   {
     id: 10,
     nombre: "Teclado Mecánico 60%",

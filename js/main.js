@@ -1,6 +1,6 @@
 /* ========================================================================
-   GO TECHSTORE - MAIN CONTROLLER FINAL
-   ======================================================================== */
+   GO TECHSTORE - MAIN CONTROLLER FINAL
+   ======================================================================== */
 
 /* --- ESTADO DE DATOS GLOBALES --- */
 let carrito = JSON.parse(localStorage.getItem("techStoreCart")) || [];
@@ -51,10 +51,11 @@ const goToCheckoutBtn = document.getElementById("goToCheckout");
 const openCartBtn = document.getElementById("openCart");
 const closeCartBtn = document.getElementById("closeCart");
 const cartItemsContainer = document.getElementById("cartItems");
+const loginOverlay = document.getElementById("loginOverlay"); // Añadido para consistencia
 
 /* ========================================================================
-   3. INICIALIZACIÓN
-   ======================================================================== */
+   3. INICIALIZACIÓN
+   ======================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
   renderShop("all");
   renderBuilderOptions("cpu");
@@ -63,8 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ========================================================================
-   4. SHOP LOGIC (CATÁLOGO Y BUSCADOR)
-   ======================================================================== */
+   4. SHOP LOGIC (CATÁLOGO Y BUSCADOR)
+   ======================================================================== */
 
 function renderShop(filtro) {
   const productosFiltrados = filtro === "all" ? productos : productos.filter((p) => p.categoria === filtro);
@@ -79,38 +80,36 @@ function renderProductList(lista) {
   }
   lista.forEach((producto) => {
     const card = document.createElement("div");
-    card.classList.add("product-card");
+    card.classList.add("product-card"); // Se eliminaron estilos inline que ahora están en style.css
     card.innerHTML = `
-            <img src="${producto.img}" alt="${producto.nombre}">
-            <div class="card-info">
-                <h3>${producto.nombre}</h3>
-                <p class="price">$${producto.precio.toLocaleString()}</p>
-                <button class="btn btn--primary" onclick="addToCart(${producto.id})">AGREGAR AL CARRITO</button>
-            </div>
-        `;
+            <img src="${producto.img}" alt="${producto.nombre}">
+            <div class="card-info">
+                <h3>${producto.nombre}</h3>
+                <p class="price">$${producto.precio.toLocaleString()}</p>
+                <button class="btn btn--primary" onclick="addToCart(${producto.id})">AGREGAR AL CARRITO</button>
+            </div>
+        `;
     shopContainer.appendChild(card);
   });
 }
 
 /* ========================================================================
-   5. LÓGICA PC BUILDER
-   ======================================================================== */
+   5. LÓGICA PC BUILDER
+   ======================================================================== */
 
 function renderBuilderOptions(categoria) {
   builderSelection.innerHTML = "";
-  builderSelection.scrollTop = 0;
+  builderSelection.scrollTop = 0; // --- PASO 0: SELECTOR DE PLATAFORMA ---
 
-  // --- PASO 0: SELECTOR DE PLATAFORMA ---
   if (categoria === "cpu" && !selectedPlatform) {
     builderSelection.innerHTML = `
-            <div class="platform-grid">
-                <div class="platform-card intel" onclick="selectPlatform('lga1700')"><h3>INTEL</h3><p>Potencia y rendimiento puro.</p></div>
-                <div class="platform-card amd" onclick="selectPlatform('am5')"><h3>AMD</h3><p>Multitasking y eficiencia.</p></div>
-            </div>`;
+            <div class="platform-grid">
+                <div class="platform-card intel" onclick="selectPlatform('lga1700')"><h3>INTEL</h3><p>Potencia y rendimiento puro.</p></div>
+                <div class="platform-card amd" onclick="selectPlatform('am5')"><h3>AMD</h3><p>Multitasking y eficiencia.</p></div>
+            </div>`;
     return;
-  }
+  } // --- BOTÓN VOLVER & CAMBIAR PLATAFORMA ---
 
-  // --- BOTÓN VOLVER & CAMBIAR PLATAFORMA ---
   const indiceActual = ordenPasos.indexOf(categoria);
 
   if (indiceActual > 0) {
@@ -127,9 +126,8 @@ function renderBuilderOptions(categoria) {
       showToast("Plataforma reseteada. Elige de nuevo.", "error");
     };
     builderSelection.appendChild(backBtn);
-  }
+  } // --- FILTRADO DE PRODUCTOS (COMPATIBILIDAD SOCKET) ---
 
-  // --- FILTRADO DE PRODUCTOS (COMPATIBILIDAD SOCKET) ---
   let opciones = productos.filter((p) => p.categoria === categoria);
 
   if ((categoria === "motherboard" || categoria === "cooler") && pcBuild.cpu) {
@@ -141,32 +139,31 @@ function renderBuilderOptions(categoria) {
   if (opciones.length === 0) {
     builderSelection.innerHTML += `<p style="color:#fff; padding:1rem;">No hay componentes compatibles disponibles.</p>`;
     return;
-  }
+  } // Renderizado de Tarjetas
 
-  // Renderizado de Tarjetas
   opciones.forEach((producto) => {
     const isSelected = pcBuild[categoria] && pcBuild[categoria].id === producto.id;
     const card = document.createElement("div");
     card.classList.add("product-card");
-    card.style.border = isSelected ? "2px solid var(--primary)" : "1px solid var(--border-color)";
+    card.style.border = isSelected ? "2px solid var(--primary)" : "1px solid var(--border-color)"; // Se eliminaron estilos inline en img, card-info y h4
 
     card.innerHTML = `
-            <img src="${producto.img}" style="height: 160px;">
-            <div class="card-info" style="padding: 1rem;">
-                <h4 style="font-size: 1rem; height:40px; overflow:hidden;">${producto.nombre}</h4>
-                ${
-                  producto.socket
-                    ? `<small style="color:#888; display:block; margin-bottom:5px;">Socket: ${producto.socket.toUpperCase()}</small>`
-                    : ""
-                }
-                <p class="price" style="font-size: 1.1rem; margin-bottom: 0.5rem;">$${producto.precio.toLocaleString()}</p>
-                <button class="btn ${
-                  isSelected ? "btn--danger" : "btn--primary"
-                }" onclick="selectComponent('${categoria}', ${producto.id})">
-                    ${isSelected ? "QUITAR" : "SELECCIONAR"}
-                </button>
-            </div>
-        `;
+            <img src="${producto.img}">
+            <div class="card-info">
+                <h4>${producto.nombre}</h4>
+                ${
+      producto.socket
+        ? `<small style="color:#888; display:block; margin-bottom:5px;">Socket: ${producto.socket.toUpperCase()}</small>`
+        : ""
+    }
+                <p class="price">$${producto.precio.toLocaleString()}</p>
+                <button class="btn ${
+      isSelected ? "btn--danger" : "btn--primary"
+    }" onclick="selectComponent('${categoria}', ${producto.id})">
+                    ${isSelected ? "QUITAR" : "SELECCIONAR"}
+                </button>
+            </div>
+        `;
     builderSelection.appendChild(card);
   });
 }
@@ -229,15 +226,15 @@ function updateBuildSummary() {
       totalBuild += component.precio;
       const li = document.createElement("li");
       li.innerHTML = `
-                <div class="build-item-row">
-                    <span><strong style="color:var(--primary)">${builderSteps[key]}:</strong><br>${
+                <div class="build-item-row">
+                    <span><strong style="color:var(--primary)">${builderSteps[key]}:</strong><br>${
         component.nombre
       }</span>
-                    <div class="build-item-price-actions">
-                        <span>$${component.precio.toLocaleString()}</span>
-                        <button class="btn-mini-delete" onclick="removeComponent('${key}')"><i class="fas fa-times"></i></button>
-                    </div>
-                </div>`;
+                    <div class="build-item-price-actions">
+                        <span>$${component.precio.toLocaleString()}</span>
+                        <button class="btn-mini-delete" onclick="removeComponent('${key}')"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>`;
       buildList.appendChild(li);
     }
   }
@@ -273,8 +270,8 @@ function addCurrentBuildToCart() {
 }
 
 /* ========================================================================
-   6. CART & CHECKOUT LOGIC
-   ======================================================================== */
+   6. CART & CHECKOUT LOGIC
+   ======================================================================== */
 
 window.addToCart = (id, openModal = true) => {
   const producto = productos.find((p) => p.id === id);
@@ -287,8 +284,7 @@ window.addToCart = (id, openModal = true) => {
     showToast(`${producto.nombre} agregado`, "success");
   }
   updateCartUI();
-  saveLocal();
-  // Aseguramos que solo el carrito esté abierto
+  saveLocal(); // Aseguramos que solo el carrito esté abierto
   if (openModal) {
     checkoutOverlay.classList.remove("active");
     loginOverlay.classList.remove("active");
@@ -320,10 +316,10 @@ function updateCartUI() {
     const itemEl = document.createElement("div");
     itemEl.classList.add("cart-item");
     itemEl.innerHTML = `
-            <img src="${item.img}" alt="${item.nombre}"><div class="cart-item-info"><h4>${
+            <img src="${item.img}" alt="${item.nombre}"><div class="cart-item-info"><h4>${
       item.nombre
     }</h4><p>$${item.precio.toLocaleString()} x ${item.cantidad}</p></div>
-            <button class="remove-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>`;
+            <button class="remove-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>`;
     cartItemsContainer.appendChild(itemEl);
   });
   cartCounter.textContent = count;
@@ -336,8 +332,8 @@ function saveLocal() {
 }
 
 /* ========================================================================
-   7. UTILS & EVENT LISTENERS
-   ======================================================================== */
+   7. UTILS & EVENT LISTENERS
+   ======================================================================== */
 
 function showToast(mensaje, tipo = "success") {
   let container = document.querySelector(".toast-container");
@@ -366,13 +362,24 @@ function setupEventListeners() {
       renderShop(e.target.dataset.filter);
     })
   );
+
+  // ✅ CORRECCIÓN: Lógica del Buscador/Search para desactivar filtros
   searchInput.addEventListener("input", (e) => {
-    const texto = e.target.value.toLowerCase();
+    const texto = e.target.value.toLowerCase().trim(); // 1. Desactiva todos los botones de filtro al empezar a escribir
+
+    document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+
+    if (texto === "") {
+      // 2. Si el campo está vacío, activa el filtro "Todo" y renderiza
+      document.querySelector('.filter-btn[data-filter="all"]').classList.add("active");
+      renderShop("all");
+      return;
+    } // 3. Filtra por el texto introducido
+
     const filtrados = productos.filter((p) => p.nombre.toLowerCase().includes(texto));
     renderProductList(filtrados);
-  });
+  }); // Builder
 
-  // Builder
   stepBtns.forEach((btn) =>
     btn.addEventListener("click", (e) => {
       stepBtns.forEach((b) => b.classList.remove("active"));
@@ -380,9 +387,8 @@ function setupEventListeners() {
       renderBuilderOptions(e.target.dataset.category);
     })
   );
-  addBuildBtn.addEventListener("click", addCurrentBuildToCart);
+  addBuildBtn.addEventListener("click", addCurrentBuildToCart); // Cart Modal Events
 
-  // Cart Modal Events
   openCartBtn.addEventListener("click", () => {
     checkoutOverlay.classList.remove("active");
     loginOverlay.classList.remove("active");
@@ -392,9 +398,8 @@ function setupEventListeners() {
   clearCartBtn.addEventListener("click", clearCart);
   document.getElementById("cartOverlay").addEventListener("click", (e) => {
     if (e.target === document.getElementById("cartOverlay")) cartOverlay.classList.remove("active");
-  });
+  }); // Checkout Modal Events
 
-  // Checkout Modal Events
   goToCheckoutBtn.addEventListener("click", () => {
     if (carrito.length === 0) {
       showToast("El carrito está vacío", "error");
@@ -421,9 +426,8 @@ function setupEventListeners() {
       submitBtn.disabled = false;
       checkoutForm.reset();
     }, 2000);
-  });
+  }); // Login Modal Events
 
-  // Login Modal Events
   loginBtn.addEventListener("click", () => {
     cartOverlay.classList.remove("active");
     checkoutOverlay.classList.remove("active");
@@ -443,12 +447,12 @@ function setupEventListeners() {
     loginBtn.innerHTML = `<i class="fas fa-user-circle"></i> <span>${nombreUsuario}</span>`;
     loginBtn.style.borderColor = "var(--primary)";
     loginBtn.style.color = "var(--primary)";
-  });
+  }); // ✅ Lógica SCROLL TO TOP (Completa)
 
-  // Scroll Top
   const scrollTopBtn = document.getElementById("scrollTopBtn");
   if (scrollTopBtn) {
     window.addEventListener("scroll", () => {
+      // Si el usuario ha bajado más de 400px, añade la clase 'visible'
       if (window.scrollY > 400) scrollTopBtn.classList.add("visible");
       else scrollTopBtn.classList.remove("visible");
     });
