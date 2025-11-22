@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GO TechStore — Armar PC</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a href="index.html" class="logo">GO<span class="accent">TECH</span></a>
+        <nav class="links">
+          <a href="index.html">Inicio</a>
+          <a href="productos.html">Productos</a>
+          <a href="builder.html" class="active">Armar PC</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="loginBtn" class="btn">Ingresar</button>
+          <div id="openCart" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i><span id="cartCounter" class="cart-counter">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2 class="section-title">PC Builder</h2>
+      <p class="text-muted">Selecciona tus componentes paso a paso</p>
+
+      <div class="builder-layout">
+        <aside class="build-summary">
+          <h3>Tu Configuración</h3>
+          <ul id="buildList"></ul>
+          <div class="build-total">Total Build: <span id="buildTotal">$0</span></div>
+          <button id="addBuildToCart" class="btn btn--primary" disabled>AGREGAR BUILD AL CARRITO</button>
+        </aside>
+
+        <section class="builder-main">
+          <div class="builder-steps">
+            <div class="step active" data-category="cpu">1. Procesador</div>
+            <div class="step" data-category="motherboard">2. Motherboard</div>
+            <div class="step" data-category="cooler">3. Refrigeración</div>
+            <div class="step" data-category="ram">4. Memoria</div>
+            <div class="step" data-category="gpu">5. GPU</div>
+            <div class="step" data-category="storage">6. Almacenamiento</div>
+            <div class="step" data-category="psu">7. Fuente</div>
+            <div class="step" data-category="case">8. Gabinete</div>
+          </div>
+
+          <div id="builderSelection" class="builder-selection"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2025 GO TechStore — Build Your Beast</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/pcBuilder.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

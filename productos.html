@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GO TechStore — Productos</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a href="index.html" class="logo">GO<span class="accent">TECH</span></a>
+        <nav class="links">
+          <a href="index.html">Inicio</a>
+          <a href="productos.html" class="active">Productos</a>
+          <a href="builder.html">Armar PC</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="loginBtn" class="btn">Ingresar</button>
+          <div id="openCart" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i><span id="cartCounter" class="cart-counter">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2 class="section-title">Catálogo Completo</h2>
+
+      <div class="shop-controls">
+        <input id="searchInput" type="text" placeholder="Buscar productos..." />
+        <div id="filters">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="cpu">CPU</button>
+          <button class="filter-btn" data-filter="motherboard">Motherboard</button>
+          <button class="filter-btn" data-filter="gpu">GPU</button>
+          <button class="filter-btn" data-filter="ram">RAM</button>
+          <button class="filter-btn" data-filter="storage">Almacenamiento</button>
+          <button class="filter-btn" data-filter="psu">Fuente</button>
+          <button class="filter-btn" data-filter="case">Gabinete</button>
+        </div>
+      </div>
+
+      <div id="productsContainer" class="products-grid"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2025 GO TechStore — Build Your Beast</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

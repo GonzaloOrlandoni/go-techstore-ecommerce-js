@@ -1,0 +1,1 @@
+console.log("Categorías activas");
